@@ -10,10 +10,6 @@ label_encoder = joblib.load('label_encoder.pkl')
 
 # Function to make predictions
 def predict_stability(hr, n):
-    # Compute the 'n' feature (as done in preprocessing)
-    #n = q * a * b * c
-    
-    # Create input array with the required features
     input_data = np.array([[hr, n]])
     
     # Scale the input data
@@ -40,10 +36,7 @@ n = st.number_input("Stability number", min_value=0.0, step=1.0)
 
 # Predict on button click
 if st.button("Predict Stability"):
-    #if any([q, a, b, c, hr, surface_dip]):
     if any([hr, n]):
-
-        #prediction = predict_stability(q, a, b, c, hr, surface_dip)
         prediction = predict_stability(hr, n)
         st.success(f"Predicted Status: **{prediction}**")
     else:
